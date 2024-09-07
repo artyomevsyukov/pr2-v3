@@ -1,4 +1,5 @@
 import { DivComponent } from "../../common/div-component";
+import "./header.scss";
 
 export class Header extends DivComponent {
     constructor(appState) {
@@ -7,10 +8,23 @@ export class Header extends DivComponent {
     }
 
     render() {
+        // let active = "";
+        // if (path === location.path) {
+        // }
         this.el.classList.add("header");
         this.el.innerHTML = `
-            <a href="#">Поиск книг</a>
-            <a href="#fovorites">Избранное</a>
+            <img class="header__logo" src="./static/logo.svg" alt="Логотип">
+            <div class="header__menu">
+                <a class="header__link header__link_active" href="#">
+                    <img class="header__link-img" src="./static/search.svg" alt="Поиск">
+                    Поиск книг
+                </a>
+                <a class="header__link" href="#fovorites">
+                    <img class="header__link-img" src="./static/favorites.svg" alt="Избранное">
+                    Избранное
+                    <div class="header__counter">${this.appState.favorites.length}</>
+                </a>
+            </div>
         `;
         return this.el;
     }
