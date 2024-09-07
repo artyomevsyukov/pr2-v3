@@ -1,0 +1,31 @@
+{
+    "name": "test",
+    "version": "1.0.0",
+    "description": "book app",
+    "main": "app.js",
+    "type": "module",
+    "scripts": {
+        "start": "live-server",
+        "build": "rollup -c --watch"
+    },
+    "keywords": [
+        "book",
+        "app",
+        "api"
+    ],
+    "author": "sffsdfsf",
+    "license": "ISC",
+    "devDependencies": {
+        "@eslint/js": "^9.9.1",
+        "globals": "^15.9.0",
+        "@rollup/plugin-node-resolve": "^15.2.3",
+        "eslint": "^9.10.0",
+        "live-server": "^1.2.2",
+        "node-sass": "^9.0.0",
+        "rollup-plugin-scss": "^4.0.0",
+        "roolup": "^1.0.4"
+    },
+    "dependencies": {
+        "on-change": "^5.0.1"
+    }
+}
