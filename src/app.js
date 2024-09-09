@@ -1,3 +1,4 @@
+import "normalize.css";
 import "../static/global.scss";
 import { MainView } from "./view/main";
 import { Favorites } from "./view/favorites";

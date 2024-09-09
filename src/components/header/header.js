@@ -8,9 +8,6 @@ export class Header extends DivComponent {
     }
 
     render() {
-        // let active = "";
-        // if (path === location.path) {
-        // }
         this.el.classList.add("header");
         this.el.innerHTML = `
             <img class="header__logo" src="./static/logo.svg" alt="Логотип">
@@ -22,9 +19,10 @@ export class Header extends DivComponent {
                 <a class="header__link" href="#fovorites">
                     <img class="header__link-img" src="./static/favorites.svg" alt="Избранное">
                     Избранное
-                    <div class="header__counter">${this.appState.favorites.length}</>
                 </a>
+                <div class="header__counter">${this.appState.favorites.length}</div>
             </div>
+
         `;
         return this.el;
     }

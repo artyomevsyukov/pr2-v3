@@ -15,23 +15,24 @@
 
     &__menu {
         display: flex;
-        gap: 27px;
     }
     &__link {
         display: flex;
         align-items: center;
         text-decoration: none;
+        margin-right: 27px;
         // outline: none;
         font-weight: 400;
         font-size: 14px;
         line-height: 143%;
         letter-spacing: 0.01em;
         color: var(--color-black);
-
-        // &__link_active {
-        //     font-weight: 700;
-        // }
     }
+
+    &__link:last-of-type {
+        margin-right: 10px;
+    }
+
     &__link_active {
         font-weight: 700;
     }
@@ -41,5 +42,16 @@
 
     &__link-img {
         margin-right: 10px;
+    }
+
+    &__counter {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 24px;
+        height: 24px;
+        border: 1px solid var(--color-black);
+        border-radius: 50%;
+        line-height: 1;
     }
 }

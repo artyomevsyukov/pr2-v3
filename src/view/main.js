@@ -1,5 +1,7 @@
+import "bundle.css";
 import { AbstractView } from "../common/view";
 import { Header } from "../components/header/header";
+import { Search } from "../components/search/search";
 
 export class MainView extends AbstractView {
     state = {
@@ -21,6 +23,7 @@ export class MainView extends AbstractView {
         main.classList.add("main");
         main.innerHTML = "Тест";
         this.app.append(main);
+        main.append(new Search(this.appState, this.state).render());
         this.renderHeader();
     }
 
