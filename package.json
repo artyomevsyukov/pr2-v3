@@ -18,12 +18,12 @@
     "devDependencies": {
         "@eslint/js": "^9.9.1",
         "@rollup/plugin-node-resolve": "^15.2.3",
-        "eslint": "^9.10.0",
+        "eslint": "^9.9.1",
         "globals": "^15.9.0",
         "live-server": "^1.2.2",
         "node-sass": "^9.0.0",
-        "rollup-plugin-scss": "^4.0.0",
-        "roolup": "^1.0.4"
+        "rollup": "^4.21.1",
+        "rollup-plugin-scss": "^4.0.0"
     },
     "dependencies": {
         "normalize.css": "^8.0.1",

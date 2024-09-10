@@ -1,5 +1,5 @@
 import "normalize.css";
-import "../static/global.scss";
+import "../static/global-style.scss";
 import { MainView } from "./view/main";
 import { Favorites } from "./view/favorites";
 
@@ -14,19 +14,20 @@ class App {
     };
 
     constructor() {
-        window.addEventListener("hashchange", this.onChange.bind(this));
+        window.addEventListener("hashchange", this.pageChange.bind(this));
+        window.addEventListener("hashchange", this.route.bind(this));
         this.route();
         this.updateActiveLink();
     }
 
-    onChange() {
+    pageChange() {
         this.route();
         this.updateActiveLink();
     }
 
     route() {
         console.log("APP rout location.hash: ", location.hash);
-
+        console.log("Current appState.favorites:", this.appState.favorites);
         if (this.currentView) {
             this.currentView.destroy();
         }
@@ -50,7 +51,7 @@ class App {
             }
         });
 
-        // console.log("currentHash: ", currentHash);
+        console.log("currentHash: ", currentHash);
     }
 }
 
