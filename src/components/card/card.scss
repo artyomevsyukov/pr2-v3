@@ -1,1 +1,61 @@
+.card {
+    display: flex;
+    flex-direction: column;
+    border-radius: 8px;
+    // margin-bottom: 20px;
+    overflow: hidden;
 
+    &__cover {
+        background-color: #b8b8b8;
+        // height: 140px;
+        height: 200px;
+        padding-top: 11px;
+        display: flex;
+        align-items: start;
+        justify-content: center;
+    }
+
+    &__desc {
+        display: flex;
+        flex-direction: column;
+        min-height: 150px;
+        padding: 10px;
+        background-color: var(--color-black);
+    }
+    &__tag {
+        font-weight: 300;
+        font-size: 10px;
+        color: #dedede;
+        margin-bottom: 3px;
+    }
+    &__name {
+        margin-bottom: 8px;
+        font-weight: 600;
+        font-size: 15px;
+        line-height: 104%;
+        color: var(--color-white);
+    }
+    &__author {
+        font-weight: 400;
+        font-size: 10px;
+        color: var(--color-white);
+    }
+    &__footer {
+        margin-top: auto;
+    }
+    &__btn-add {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid #fafafa;
+        border-radius: 6px;
+        padding: 6px 8px;
+        width: 36px;
+        height: 32px;
+        background-color: inherit;
+        cursor: pointer;
+    }
+    &__btn-add_favorites {
+        background-color: var(--color-white);
+    }
+}

@@ -19,7 +19,9 @@ export class Search extends DivComponent {
                     ? this.parentState.searchQuery
                     : "ffg"
             }>
-            <button class="search__btn"><img src="./static/search-white.svg" alt="Поиск"></button>
+            <button class="search__btn">
+                <img src="./static/search-white.svg" alt="Поиск">
+            </button>
         `;
         this.el
             .querySelector(".search__btn")

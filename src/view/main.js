@@ -27,14 +27,14 @@ export class MainView extends AbstractView {
     }
 
     appStateHook(path) {
-        console.log("main change appState: ", this.appState);
+        // console.log("main change appState: ", this.appState);
         if (path === "favorites") {
             this.render();
         }
     }
 
     async stateHook(path) {
-        console.log("PATH:", path, "Запустился stateHooj c PATH:", path);
+        // console.log("PATH:", path, "Запустился stateHooj c PATH:", path);
         if (path === "searchQuery") {
             this.state.loading = true;
             const data = await this.loadList(
@@ -45,8 +45,8 @@ export class MainView extends AbstractView {
             this.state.loading = false;
             this.state.numFound = data.numFound;
             this.state.list = data.docs;
-            console.log("this.state.list: ", this.state.list);
-            console.log("this.state.numFound: ", this.state.numFound);
+            // console.log("this.state.list: ", this.state.list);
+            // console.log("this.state.numFound: ", this.state.numFound);
         }
         if (path === "loading" || path === "list") {
             this.render();
@@ -61,10 +61,13 @@ export class MainView extends AbstractView {
     }
 
     render() {
-        console.log("this.state.numFound: ", this.state.numFound);
+        console.log("START RENDER MAIN");
+        // console.log("this.state.numFound: ", this.state.numFound);
         const main = document.createElement("div");
         main.classList.add("main");
-        // main.innerHTML = "Тест";
+        main.innerHTML = `
+            <h1 class="card-list__title">Найдено книг – ${this.state.numFound}</h1>
+        `;
         main.append(new Search(this.state).render());
         main.append(new CardList(this.appState, this.state).render());
         this.app.innerHTML = "";

@@ -26,8 +26,8 @@ class App {
     }
 
     route() {
-        console.log("APP rout location.hash: ", location.hash);
-        console.log("Current appState.favorites:", this.appState.favorites);
+        // console.log("APP rout location.hash: ", location.hash);
+        // console.log("Current appState.favorites:", this.appState.favorites);
         if (this.currentView) {
             this.currentView.destroy();
         }
@@ -51,7 +51,7 @@ class App {
             }
         });
 
-        console.log("currentHash: ", currentHash);
+        // console.log("currentHash: ", currentHash);
     }
 }
 
