@@ -12,7 +12,7 @@ export class MainView extends AbstractView {
         numFound: 0,
         searchQuery: undefined,
         offset: 0,
-        offsetLimit: 10,
+        offsetLimit: 5,
     };
 
     constructor(appState) {
@@ -37,7 +37,7 @@ export class MainView extends AbstractView {
 
     async stateHook(path) {
         // console.log("PATH:", path, "Запустился stateHooj c PATH:", path);
-        if (path === "searchQuery") {
+        if (path === "searchQuery" || path === "offset") {
             this.state.loading = true;
             const data = await this.loadList(
                 this.state.searchQuery,
@@ -54,19 +54,6 @@ export class MainView extends AbstractView {
         }
         if (path === "loading" || path === "list") {
             this.render();
-        }
-        if (path === "offset") {
-            console.log("this.parentState.offset: ", this.state.offset);
-            console.log("this.state.numFound:", this.state.numFound);
-            this.state.loading = true;
-            const data = await this.loadList(
-                this.state.searchQuery,
-                this.state.offset,
-                this.state.offsetLimit
-            );
-            this.state.loading = false;
-            this.state.numFound = data.numFound;
-            this.state.list = data.docs;
         }
     }
 

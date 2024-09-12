@@ -8,7 +8,7 @@ export class Pagination extends DivComponent {
     }
 
     loadPrevPage() {
-        console.log("this.parentState.offset: ", this.parentState.offset);
+        // console.log("this.parentState.offset: ", this.parentState.offset);
         if (this.parentState.offset >= this.parentState.offsetLimit) {
             this.parentState.offset -= this.parentState.offsetLimit;
         }
@@ -16,7 +16,7 @@ export class Pagination extends DivComponent {
     }
 
     loadNextPage() {
-        console.log("this.parentState.offset: ", this.parentState.offset);
+        // console.log("this.parentState.offset: ", this.parentState.offset);
         if (
             this.parentState.offset + this.parentState.offsetLimit <
             this.parentState.numFound
