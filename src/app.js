@@ -14,20 +14,20 @@ class App {
     };
 
     constructor() {
-        window.addEventListener("hashchange", this.pageChange.bind(this));
         window.addEventListener("hashchange", this.route.bind(this));
+        window.addEventListener("hashchange", this.onChange.bind(this));
         this.route();
         this.updateActiveLink();
     }
 
-    pageChange() {
+    onChange() {
         this.route();
         this.updateActiveLink();
     }
 
     route() {
-        // console.log("APP rout location.hash: ", location.hash);
-        // console.log("Current appState.favorites:", this.appState.favorites);
+        console.log("APP rout location.hash: ", location.hash);
+        console.log("Current appState.favorites:", this.appState.favorites);
         if (this.currentView) {
             this.currentView.destroy();
         }
@@ -41,7 +41,7 @@ class App {
 
         const currentHash = window.location.hash || "#";
 
-        // console.log(links);
+        console.log(links);
 
         links.forEach((link) => {
             if (link.getAttribute("href") === currentHash) {
@@ -51,7 +51,7 @@ class App {
             }
         });
 
-        // console.log("currentHash: ", currentHash);
+        console.log("currentHash: ", currentHash);
     }
 }
 

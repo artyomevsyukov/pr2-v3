@@ -1,0 +1,33 @@
+// <img src="./static/arrow_left.svg" alt="Предыдущая страница">
+// <img src="./static/arrow_right.svg" alt="Следующая страница">
+.pagination {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 90px;
+
+    &__btn {
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 143%;
+        letter-spacing: 0.01em;
+        // text-align: right;
+        color: var(--color-black);
+        border: none;
+        cursor: pointer;
+    }
+
+    &__btn:hover {
+        font-weight: 700;
+    }
+
+    &__prevPage {
+        padding-left: 30px;
+        background: url("/static/arrow_left.svg") no-repeat left center;
+        background-size: 20px;
+    }
+    &__nextPage {
+        padding-right: 30px;
+        background: url("/static/arrow_right.svg") no-repeat right center;
+        background-size: 20px;
+    }
+}

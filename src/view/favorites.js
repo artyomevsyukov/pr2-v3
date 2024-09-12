@@ -2,6 +2,7 @@ import { AbstractView } from "../common/view";
 import onChange from "on-change";
 import { Header } from "../components/header/header";
 import { CardList } from "../components/cardlist/card-list";
+import { Pagination } from "../components/pagination/pagination";
 
 export class Favorites extends AbstractView {
     constructor(appState) {
@@ -35,8 +36,14 @@ export class Favorites extends AbstractView {
             }).render()
         );
         this.app.append(main);
+
+        if (this.appState.favorites.length > 5) {
+            main.append(new Pagination(this.state).render());
+        }
+
         this.renderHeader();
     }
+
     renderHeader() {
         const header = new Header(this.appState).render();
         this.app.prepend(header);

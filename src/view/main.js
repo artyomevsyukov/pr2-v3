@@ -3,6 +3,7 @@ import onChange from "on-change";
 import { Header } from "../components/header/header";
 import { Search } from "../components/search/search";
 import { CardList } from "../components/cardlist/card-list";
+import { Pagination } from "../components/pagination/pagination";
 
 export class MainView extends AbstractView {
     state = {
@@ -11,6 +12,7 @@ export class MainView extends AbstractView {
         numFound: 0,
         searchQuery: undefined,
         offset: 0,
+        offsetLimit: 10,
     };
 
     constructor(appState) {
@@ -39,9 +41,11 @@ export class MainView extends AbstractView {
             this.state.loading = true;
             const data = await this.loadList(
                 this.state.searchQuery,
-                this.state.offset
+                this.state.offset,
+                this.state.offsetLimit
             );
-
+            console.log("this.parentState.offset: ", this.state.offset);
+            console.log("this.state.numFound:", this.state.numFound);
             this.state.loading = false;
             this.state.numFound = data.numFound;
             this.state.list = data.docs;
@@ -51,11 +55,24 @@ export class MainView extends AbstractView {
         if (path === "loading" || path === "list") {
             this.render();
         }
+        if (path === "offset") {
+            console.log("this.parentState.offset: ", this.state.offset);
+            console.log("this.state.numFound:", this.state.numFound);
+            this.state.loading = true;
+            const data = await this.loadList(
+                this.state.searchQuery,
+                this.state.offset,
+                this.state.offsetLimit
+            );
+            this.state.loading = false;
+            this.state.numFound = data.numFound;
+            this.state.list = data.docs;
+        }
     }
 
-    async loadList(q, offset) {
+    async loadList(q, offset, limit) {
         const res = await fetch(
-            `https://openlibrary.org/search.json?q=${q}&offset=${offset}`
+            `https://openlibrary.org/search.json?q=${q}&offset=${offset}&limit=${limit}`
         );
         return res.json();
     }
@@ -70,6 +87,7 @@ export class MainView extends AbstractView {
         `;
         main.append(new Search(this.state).render());
         main.append(new CardList(this.appState, this.state).render());
+        main.append(new Pagination(this.state).render());
         this.app.innerHTML = "";
         this.app.append(main);
         this.renderHeader();
