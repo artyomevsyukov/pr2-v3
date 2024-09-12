@@ -2,15 +2,18 @@ import "normalize.css";
 import "../static/global-style.scss";
 import { MainView } from "./view/main";
 import { Favorites } from "./view/favorites";
+import { Book } from "./view/book";
 
 class App {
     routes = [
         { path: "", view: MainView },
         { path: "#fovorites", view: Favorites },
+        { path: "#book", view: Book },
     ];
 
     appState = {
         favorites: [],
+        book: [],
     };
 
     constructor() {
@@ -26,8 +29,9 @@ class App {
     }
 
     route() {
-        console.log("APP rout location.hash: ", location.hash);
-        console.log("Current appState.favorites:", this.appState.favorites);
+        // console.log("APP rout location.hash: ", location.hash);
+        // console.log("Current appState.favorites:", this.appState.favorites);
+
         if (this.currentView) {
             this.currentView.destroy();
         }
@@ -41,7 +45,7 @@ class App {
 
         const currentHash = window.location.hash || "#";
 
-        console.log(links);
+        // console.log(links);
 
         links.forEach((link) => {
             if (link.getAttribute("href") === currentHash) {
@@ -51,7 +55,7 @@ class App {
             }
         });
 
-        console.log("currentHash: ", currentHash);
+        // console.log("currentHash: ", currentHash);
     }
 }
 

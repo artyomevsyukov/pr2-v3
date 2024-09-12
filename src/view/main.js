@@ -44,8 +44,11 @@ export class MainView extends AbstractView {
                 this.state.offset,
                 this.state.offsetLimit
             );
-            console.log("this.parentState.offset: ", this.state.offset);
-            console.log("this.state.numFound:", this.state.numFound);
+            // const dataBook = await this.loadList("/works/OL16791644W");
+            // console.log(("DATABOOK: ", dataBook));
+
+            // console.log("this.parentState.offset: ", this.state.offset);
+            // console.log("this.state.numFound:", this.state.numFound);
             this.state.loading = false;
             this.state.numFound = data.numFound;
             this.state.list = data.docs;
@@ -63,9 +66,13 @@ export class MainView extends AbstractView {
         );
         return res.json();
     }
+    async loadCard(key) {
+        const res = await fetch(`https://openlibrary.org/${key}`);
+        return res.json();
+    }
 
     render() {
-        console.log("START RENDER MAIN");
+        // console.log("START RENDER MAIN");
         // console.log("this.state.numFound: ", this.state.numFound);
         const main = document.createElement("div");
         main.classList.add("main");

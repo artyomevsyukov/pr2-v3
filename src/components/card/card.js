@@ -1,4 +1,5 @@
 import { DivComponent } from "../../common/div-component";
+// import { Book } from "../../view/book";
 import "./card.scss";
 
 export class Card extends DivComponent {
@@ -10,21 +11,33 @@ export class Card extends DivComponent {
 
     #addToFavorites() {
         this.appState.favorites.push(this.cardState);
-
-        console.log("add");
-        console.log("this.cardState PUSH: ", this.cardState);
-        console.log("this.appState.favorites: ", this.appState.favorites);
     }
 
     #deleteFromFavorites() {
         this.appState.favorites = this.appState.favorites.filter(
             (b) => b.key !== this.cardState.key
         );
+    }
+    // async loadBook(key) {
+    // const res = await fetch(`https://openlibrary.org${key}`);
+    // return res.json();
+    // }
 
-        // console.log("DELETE");
-        // console.log("this.cardState FILTER: ", this.cardState);
-        // console.log("this.appState.favorites: ", this.appState.favorites);
-        // console.log("this: ", this);
+    async #openBook(event) {
+        if (event.target.closest("button")) {
+            return;
+        }
+        console.log("Карточка нажата: ", this.cardState);
+        console.log("KEY: ", this.cardState.key);
+
+        // const dataBook = await this.loadBook(this.cardState.key);
+        // console.log(("DATABOOK: ", dataBook));
+        console.log(
+            "PUSH this.appState.book :",
+            (this.appState.book = this.cardState)
+        );
+
+        window.location.hash = "#book";
     }
 
     render() {
@@ -34,6 +47,7 @@ export class Card extends DivComponent {
 
         // console.log("CARD this.cardState: ", this.cardState);
         this.el.classList.add("card");
+        this.el.setAttribute("book-key", this.cardState.key);
         this.el.innerHTML = `
             <div class="card__cover">
                 <img class="card__img" src="https://covers.openlibrary.org/b/olid/${
@@ -81,6 +95,11 @@ export class Card extends DivComponent {
                 .querySelector("button")
                 .addEventListener("click", this.#addToFavorites.bind(this));
         }
+
+        this.el.addEventListener("click", (event) => this.#openBook(event));
+
+        const book = document.createElement("div");
+        this.el.append(book);
 
         return this.el;
     }
