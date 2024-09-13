@@ -17,7 +17,7 @@ export class Search extends DivComponent {
             <input class="search__input" type="text" name="search" placeholder="Найти книгу или автора...."  value=${
                 this.parentState.searchQuery
                     ? this.parentState.searchQuery
-                    : "ffg"
+                    : "harry potter"
             }>
             <button class="search__btn">
                 <img src="./static/search-white.svg" alt="Поиск">

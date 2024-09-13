@@ -1,0 +1,125 @@
+.book {
+    &__title {
+        margin-bottom: 21px;
+        font-weight: 600;
+        font-size: 24px;
+        line-height: 133%;
+        color: var(--color-black);
+    }
+    &-wrapper {
+        display: flex;
+        margin-bottom: 20px;
+    }
+
+    &__cover {
+        margin-right: 20px;
+    }
+
+    &__img {
+        border-radius: 8px;
+        height: 214px;
+        width: 165px;
+    }
+
+    &__info {
+        margin-bottom: 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 160%;
+        color: var(--color-black);
+
+        & span {
+            font-weight: 700;
+        }
+    }
+
+    &__page {
+        margin-bottom: 25px;
+    }
+}
+
+.book-desc {
+    margin-bottom: 21px;
+
+    &__title {
+        font-weight: 600;
+        font-size: 14px;
+        line-height: 229%;
+        color: var(--color-black);
+    }
+    &__body {
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 160%;
+        color: var(--color-black);
+    }
+}
+
+.book-tag {
+    margin-bottom: 12px;
+
+    &__title {
+        margin-bottom: 15px;
+        font-weight: 600;
+        font-size: 14px;
+        line-height: 229%;
+        color: var(--color-black);
+    }
+    &__link {
+        margin-right: 8px;
+        border: 1px solid #000;
+        border-radius: 6px;
+        padding: 6px 8px;
+        width: 62px;
+        height: 32px;
+
+        text-decoration: none;
+
+        font-weight: 600;
+        font-size: 14px;
+        line-height: 143%;
+        letter-spacing: 0.01em;
+        color: var(--color-black);
+        transition: background-color 0.5s ease-in;
+
+        &:hover {
+            background-color: #adadad;
+        }
+    }
+}
+
+.book-favorites {
+    // border-radius: 4px;
+    // padding: 6px 8px;
+    // width: 161px;
+    // height: 40px;
+
+    &__btn-add {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 4px;
+        padding: 6px 8px;
+        width: 161px;
+        height: 40px;
+        background-color: var(--color-black);
+        cursor: pointer;
+        border: none;
+
+        font-weight: 600;
+        font-size: 14px;
+        line-height: 143%;
+        letter-spacing: 0.01em;
+        text-align: center;
+        color: rgb(223, 232, 233);
+    }
+
+    &__btn-add_favorites {
+        background-color: var(--color-white);
+        color: var(--color-black);
+        border: 1px solid var(--color-black);
+    }
+}

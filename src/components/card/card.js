@@ -27,16 +27,23 @@ export class Card extends DivComponent {
         if (event.target.closest("button")) {
             return;
         }
-        console.log("Карточка нажата: ", this.cardState);
-        console.log("KEY: ", this.cardState.key);
+        // console.log("Карточка нажата: ", this.cardState);
+        // console.log("KEY: ", this.cardState.key);
 
         // const dataBook = await this.loadBook(this.cardState.key);
         // console.log(("DATABOOK: ", dataBook));
-        console.log(
-            "PUSH this.appState.book :",
-            (this.appState.book = this.cardState)
-        );
 
+        // const bookKey = event.currentTarget.getAttribute("book-key");
+
+        // const url = new URL(window.location);
+        // url.searchParams.set("id", bookKey); // Добавляем или обновляем параметр id
+        // window.history.pushState({}, "", url); // Обновляем URL без перезагрузки страницы
+
+        // console.log("Карточка с ID:", bookKey, "выбрана");
+        // console.log("window.location", window.location);
+        // console.log("DOCUMENT.location", document.location);
+        this.appState.book = this.cardState;
+        console.log("PUSH this.appState.book :", this.cardState);
         window.location.hash = "#book";
     }
 
