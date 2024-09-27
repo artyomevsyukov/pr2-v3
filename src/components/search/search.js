@@ -1,4 +1,6 @@
 import { DivComponent } from "../../common/div-component";
+// import { debounce } from '../../core/utils/debounce';
+
 import "./search.scss";
 
 export class Search extends DivComponent {
@@ -11,6 +13,7 @@ export class Search extends DivComponent {
         const value = this.el.querySelector("input").value;
         this.parentState.searchQuery = value;
     }
+
     render() {
         this.el.classList.add("search");
         this.el.innerHTML = `
@@ -32,6 +35,45 @@ export class Search extends DivComponent {
             }
         });
 
+        this.el.querySelector("input").addEventListener(
+            "input",
+            this.debounce(() => this.debounceSearch(), 500) // Привязываем контекст с помощью bind
+        );
+
         return this.el;
+    }
+
+    debounce(func, delay) {
+        let timeout;
+        return function (...args) {
+            clearTimeout(timeout);
+            timeout = setTimeout(() => func.apply(this, args), delay);
+        };
+    }
+
+    debounceSearch() {
+        let input = document.querySelector(".search__input").value;
+        console.log("input: ", input);
+        const query = input;
+        if (query) {
+            // this.searchQuery(query, 0, 5); // Отправляем запрос на сервер
+            this.parentState.searchQuery = query;
+            input = "";
+        }
+    }
+
+    async searchQuery(query, offset, limit) {
+        try {
+            const res = await fetch(
+                `https://openlibrary.org/search.json?q=${query}&offset=${offset}&limit=${limit}`
+            );
+            if (!res.ok) {
+                throw new Error(`Ошибка: ${res.status}`);
+            }
+            const data = await res.json();
+            console.log("Результаты поиска:", data); // Вывод результатов поиска в консоль
+        } catch (error) {
+            console.error("Ошибка при отправке запроса:", error);
+        }
     }
 }

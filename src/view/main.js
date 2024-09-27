@@ -12,7 +12,7 @@ export class MainView extends AbstractView {
         numFound: 0,
         searchQuery: undefined,
         offset: 0,
-        offsetLimit: 5,
+        offsetLimit: 10,
     };
 
     constructor(appState) {
@@ -61,11 +61,19 @@ export class MainView extends AbstractView {
     }
 
     async loadList(q, offset, limit) {
-        const res = await fetch(
-            `https://openlibrary.org/search.json?q=${q}&offset=${offset}&limit=${limit}`
-        );
-        return res.json();
+        try {
+            const res = await fetch(
+                `https://openlibrary.org/search.json?q=${q}&offset=${offset}&limit=${limit}`
+            );
+            if (!res.ok) {
+                throw new Error(`Ошибка: ${res.status}`);
+            }
+            return res.json();
+        } catch (error) {
+            console.error("Ошибка при отправке запроса:", error);
+        }
     }
+
     async loadCard(key) {
         const res = await fetch(`https://openlibrary.org/${key}`);
         return res.json();
